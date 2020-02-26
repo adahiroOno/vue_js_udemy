@@ -1,0 +1,32 @@
+<!-- https://www.udemy.com/course/vue-js-complete-guide/learn/lecture/15370950#overview -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+  <script src="vue.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+  <div id="app">
+    <p>{{ message }}</p>
+    <!-- 上と下では同じ意味になり、HellowWorld!が表示される-->
+    <P v-text="message"></P>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+          message: 'HellowWorld!'
+      },
+      methods: {
+        sayHi: function() {
+            return this.message;
+          }
+      }
+    })
+  </script>
+</body>
+</html>
