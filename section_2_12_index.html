@@ -1,0 +1,33 @@
+<!-- https://www.udemy.com/course/vue-js-complete-guide/learn/lecture/15370952#overview -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+  <script src="vue.js"></script>
+  <div id="app">
+    <!-- 一度しか描画させない属性(ディレクティブ)をv-onceという -->
+    <!-- v-onceを付けない場合、dataで１回描画した後,methodsの中のmessageで再度描画することになり、Hello VueJSとなる。-->
+    <p v-once>{{ message }}</p>
+    <p>{{ sayHi() }}</p>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+          message: 'HellowWorld!'
+      },
+      methods: {
+        sayHi: function() {
+            this.message = 'Hello VueJS'
+            return 'Hi'
+          }
+      }
+    })
+  </script>
+</body>
+</html>
