@@ -1,0 +1,34 @@
+<!-- https://www.udemy.com/course/vue-js-complete-guide/learn/lecture/15370952#overview -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+  <script src="vue.js"></script>
+  <div id="app">
+    <div>{{ html }}</div>
+    <!-- htmlのタグを適応させたい時にはv-htmlと記述することで、data内のタグを文字列ではなくhtmlタグとして認識してくれる -->
+    <!-- htmlディレクティブは取り扱いに注意!クロスサイトスクリプティング(XXS脆弱性)の可能性が存在。ブログなどにscriptタグを入れたりして、悪意のあることに使われる可能性がある -->
+    <!-- 信頼のコンテンツにのみにつかう -->
+    <div v-html="html"></div>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+          html: '<h1>h1です</h1>'
+      }
+      // methods: {
+      //   sayHi: function() {
+      //       this.message = 'Hello VueJS'
+      //       return 'Hi'
+      //     }
+      // }
+    })
+  </script>
+</body>
+</html>
