@@ -1,0 +1,38 @@
+<!-- https://www.udemy.com/course/vue-js-complete-guide/learn/lecture/15370952#overview -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+  <script src="vue.js"></script>
+  <div id="app">
+    <!-- HTMLの属性を対象にデータの紐付けができる。v-bindを省略し、:の後ろにHTML属性を引数にすることもできる記法は統一するべき。 -->
+    <!-- HTML属性も動的に変更することが可能 コロンの後ろに角括弧を使う。-->
+     <a :[attribute]="url">Google</a>
+     <!--  プラスアルファでidなどを加えたい時は、:id="test"のように記述して、追加することができる -->
+     <a :href="urlTwitter" :id="number">Twitter</a><br>
+
+     <!-- オブジェクト化して、冗長にならないようにする書き方 -->
+     <a v-bind="{href: urlTwitter, id: number}">Twitter</a><br>
+
+     <!-- 更に、まとめる方法 -->
+     <a v-bind="twitterObject">Twitter</a><br>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+          url: 'http://google.com',
+          urlTwitter: 'https://twitter.com',
+          number: 31,
+          attribute: 'href',
+          twitterObject: {href: 'https://twitter.com', id: 31}
+      }
+    })
+  </script>
+</body>
+</html>
