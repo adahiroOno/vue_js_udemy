@@ -1,0 +1,51 @@
+<!-- https://www.udemy.com/course/vue-js-complete-guide/learn/lecture/15370952#overview -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+  <script src="vue.js"></script>
+  <div id="app">
+    <p>現在{{ number }}回クリックされています</p>
+    <button v-on:click="countUp(2)">カウントアップ</button>
+    <!-- pタグに載せる(マウスを動かす)とイベントが発火するようになっている -->
+    <!-- 特別な$eventという引数を渡すことで、 数値とeventを渡すことができる-->
+    <p v-on:mousemove="changeMousePosition(10, $event)">マウスを載せてください
+    <span v-on:mousemove.stop.prevent>反応しないでください</span></p>
+    <span v-on:mousemove="noEvent">反応しないでください</span></p>
+    <!-- prevent defalutとは デフォルトの挙動をさせないイベント-->
+    <p v-on:click.prevent.stop="noJump" href="https://google.com">Google</p>
+    <p>X: {{x}}, Y:{{y}}</p>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        number: 0,
+        x:0,
+        y:0
+      },
+      methods: {
+        countUp: function(times) {
+          this.number += 1 * 2
+        },
+        changeMousePosition: function(divideNumber, event) {
+          //clientX,Yはマウスが画面のどの位置にいるのかを表す。
+          this.x = event.clientX / divideNumber;
+          this.y = event.clientY / divideNumber;
+        },
+        noEvent: function(event) {
+          event.stopPropagation()
+        },
+        noJump: function(envet) {
+          envent.preventDefalut();
+        }
+      }
+    })
+  </script>
+</body>
+</html>
