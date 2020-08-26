@@ -1,0 +1,55 @@
+<!-- https://www.udemy.com/course/vue-js-complete-guide/learn/lecture/15370952#overview -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+  <script src="vue.js"></script>
+  <div id="app">
+    <!-- computedプロパティ（算出プロパティ)
+       =>　複数の式を要求するロジックがある場合に使う
+    　-->
+    <p>{{ counter }}</p>
+    <!-- v-onディレクティブの中では丸括弧では付けなくも付けても良い
+      v-onディレクティブでは、あくまでjavascript式を書いている。
+    -->
+    <button @click="countUp">+1</button>
+    <button @click="countUp()">+1</button>
+    <!-- computedは必ず二重中括弧の中では、丸括弧を付けない。
+      methodsは二重中括弧の中では必ず丸括弧をつける
+      二重中括弧では、vueの書式に従う。
+    -->
+    <p>{{ doubleCounterComputed }}</p>
+    <p>{{ doubleCounterMethod() }}</p>
+
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      // dataは動的な表現ができない、data内は初期値を扱う！
+      data: {
+        counter: 0
+      },
+      // ウォッチャとは、特定のデータが変わった時に処理をしたい時に使う
+      // computedでできない時は、watchを使う。基本は、computedを使うことがベストプラティクス
+      computed: {
+        doubleCounterComputed: function() {
+          return this.counter * 2; 
+        }
+      },
+      methods: {
+        countUp: function() {
+          this.counter += 1;
+        },
+        doubleCounterMethod: function() {
+          return this.counter * 2;
+        }
+      }
+    })
+  </script>
+</body>
+</html>
