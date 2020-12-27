@@ -1,0 +1,43 @@
+<!-- https://www.udemy.com/course/vue-js-complete-guide/learn/lecture/15370952#overview -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+  <script src="vue.js"></script>
+  <div id="app">
+    <h1 :class="[color bg]">Hello</h1>
+    <button @click="isActive = !isActive">切替え</button>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+       isActive: true,
+       color: 'red',
+       bg: 'bg-blue'
+      },
+      computed: {
+        classObject: function() {
+          return {
+            red: this.isActive,
+            'bg-bule': !this.isActive
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>
+<style>
+  .red {
+    color: red;
+  }
+  .bg-bule {
+    background-color: blue;
+  }
+</style>
