@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3.42</title>
+</head>
+<body>
+  <script src="../vue.js"></script>
+  <div id="app">
+    <ul>
+      <!-- forの第二引数にindexを持つことができる -->
+      <li v-for="(fruit, index) in fruits">{{index}} {{fruit}}</li>
+    </ul>
+    <ul>
+      <li v-for="value in object">{{ value }}</li>
+    </ul>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        fruits: ['りんご', 'バナナ', 'ぶどう'],
+        object: {
+          firstName: '太郎',
+          lastName: '田中',
+          age: 21,
+        }
+      }
+    })
+  </script>
+</body>
+</html>
