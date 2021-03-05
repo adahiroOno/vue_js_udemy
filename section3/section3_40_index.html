@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3.40</title>
+</head>
+<body>
+  <script src="../vue.js"></script>
+  <div id="app">
+    <button @click="ok = !ok">ボタン</button>
+    <!-- v-ifは要素ごとで消し去る -->
+    <p v-if="ok">IF</p>
+    <!-- v-showはcssベースでdisplay: none;にすることで要素を非表示にしている
+      v-showではtemplateでは使えない。
+      初期描画が遅い。描画しない場合も、要素としてDOMに追加してします。
+      初期描画のコストが高い。
+      v-ifは、要素要素をボタンを切り替えるごとにDOMの削除を行っているので、パフォーマンスコストが高い。
+      とても頻繁に切り替えるような場合は、v-show。条件が実行時にほとんど変わらない場合は、v-ifを利用すると良い。
+     -->
+    <p v-show="ok">Show</p>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        ok: true,
+      }
+    })
+  </script>
+</body>
+</html>
